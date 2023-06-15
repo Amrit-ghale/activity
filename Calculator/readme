@@ -1,0 +1,9 @@
+JavaScript Code:
+
+The add, subtract, multiply, and divide functions are defined to perform the respective operations. They retrieve the values entered in the input fields, convert them to numbers using parseFloat(), perform the calculation, and display the result in the <p> element.
+
+Inside each function, parseFloat() is used to convert the input values to floating-point numbers. This allows us to perform mathematical operations accurately.
+
+The result is then assigned to the result variable and displayed in the <p> element using the innerText property.
+
+Each button has an onclick attribute that calls the respective function when clicked.

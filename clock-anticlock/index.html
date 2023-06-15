@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .square {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      transition: all 3s;
+    }
+
+    #button-container {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #button-container button {
+      margin: 0 5px;
+    }
+
+    #counter-container {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="square" class="square"></div>
+  
+  <div id="button-container">
+    <button onclick="changeSpeed('increase')">Increase Speed</button>
+    <button onclick="changeSpeed('decrease')">Decrease Speed</button>
+    <button onclick="pauseAnimation()">Pause</button>
+    <button onclick="resumeAnimation()">Resume</button>
+  </div>
+  
+  <div id="counter-container">Round: <span id="counter">0</span></div>
+
+  <script>
+    var square = document.getElementById('square');
+    var speed = 3; // initial speed in seconds
+    var isPaused = false;
+    var timeoutId;
+    var roundCounter = 0;
+
+    function animate() {
+      square.style.top = '0';
+      square.style.left = '0';
+      square.style.backgroundColor = 'red';
+
+      timeoutId = setTimeout(moveToRight, speed * 1000);
+    }
+
+    function moveToRight() {
+      square.style.left = 'calc(100vw - 50px)';
+      square.style.backgroundColor = 'blue';
+
+      timeoutId = setTimeout(moveToBottomRight, speed * 1000);
+    }
+
+    function moveToBottomRight() {
+      square.style.top = 'calc(100vh - 50px)';
+      square.style.backgroundColor = 'green';
+
+      timeoutId = setTimeout(moveToBottomLeft, speed * 1000);
+    }
+
+    function moveToBottomLeft() {
+      square.style.left = '0';
+      square.style.backgroundColor = 'yellow';
+
+      timeoutId = setTimeout(moveToTopLeft, speed * 1000);
+    }
+
+    function moveToTopLeft() {
+      square.style.top = '0';
+      square.style.backgroundColor = 'red';
+
+      timeoutId = setTimeout(moveToRight, speed * 1000);
+
+      roundCounter++;
+      document.getElementById('counter').textContent = roundCounter;
+    }
+
+    function changeSpeed(action) {
+      if (action === 'increase') {
+        speed -= 0.5; // Decrease speed by 0.5 seconds
+      } else if (action === 'decrease') {
+        speed += 0.5; // Increase speed by 0.5 seconds
+      }
+
+      // Ensure speed is always positive
+      if (speed < 0.5) {
+        speed = 0.5;
+      }
+    }
+
+    function pauseAnimation() {
+      if (!isPaused) {
+        clearTimeout(timeoutId);
+        isPaused = true;
+      }
+    }
+
+    function resumeAnimation() {
+      if (isPaused) {
+        isPaused = false;
+        moveToRight();
+      }
+    }
+
+    // Start the animation
+    animate();
+  </script>
+</body>
+</html>

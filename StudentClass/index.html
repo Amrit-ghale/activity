@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>Student Dashboard</h1>
+
+  <div class="student-details">
+    <p><strong>Student ID:</strong> <span id="student-id"></span></p>
+    <p><strong>First Name:</strong> <span id="first-name"></span></p>
+    <p><strong>Last Name:</strong> <span id="last-name"></span></p>
+    <p><strong>Major:</strong> <span id="major"></span></p>
+    <p><strong>GPA:</strong> <span id="gpa"></span></p>
+  </div>
+
+  <div class="navigation-buttons">
+    <button id="btn-first">First</button>
+    <button id="btn-previous">Previous</button>
+    <button id="btn-next">Next</button>
+    <button id="btn-last">Last</button>
+  </div>
+
+  <div class="management-buttons">
+    <button id="btn-add">Add Student</button>
+    <button id="btn-delete">Delete Student</button>
+  </div>
+
+  <div class="search-bar">
+    <label for="search-input">Search By:</label>
+    <select id="search-type">
+      <option value="major">Major</option>
+      <option value="last-name">Last Name</option>
+      <option value="gpa">GPA</option>
+    </select>
+    <input type="text" id="search-input" placeholder="Search...">
+    <button id="btn-search">Search</button>
+  </div>
+
+  <div class="sorting-buttons">
+    <button id="btn-sort-gpa">Sort by GPA</button>
+    <button id="btn-sort-last-name">Sort by Last Name</button>
+    <button id="btn-list-major">List Major by Average Marks</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
